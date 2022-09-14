@@ -8,7 +8,9 @@ phases:
   build:
     commands:
       - aws eks update-kubeconfig --region us-east-1 --name demo2
-      - kubectl version
+      - kubectl version --short --client
+      - kubectl get svc
+
   post_build:
     commands:
-      - kubectl get svc -A
+      - echo soban
