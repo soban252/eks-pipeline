@@ -27,4 +27,4 @@ jobs:
         ECR_REPOSITORY: my-app
         
       with:
-        args: get svc -A
+        args: apply -f service.yaml
