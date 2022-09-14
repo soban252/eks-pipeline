@@ -25,13 +25,6 @@ jobs:
         KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA_STAGING }}
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: my-app
-        IMAGE_TAG: ${{ github.sha }}
-      with:
-        args: set image deployment/nginx 196236753581.dkr.ecr.us-east-1.amazonaws.com/demoiftikhar:latest
         
-    - name: verify deployment
-      uses: kodermax/kubectl-aws-eks@master
-      env:
-        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
       with:
-        args: rollout status deployment/nginx
+        args: get svc -A
