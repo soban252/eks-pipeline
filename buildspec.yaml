@@ -2,12 +2,12 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.15.0/bin/linux/amd64/kubectl
+      - curl -o kubectl https://s3.us-west-2.amazonaws.com/amazon-eks/1.22.6/2022-03-09/bin/linux/amd64/kubectl
       - chmod +x ./kubectl
       - mv -f ./kubectl /usr/local/bin/kubectl
   build:
     commands:
-      - aws eks update-kubeconfig --name demo2
+      - aws eks update-kubeconfig --region us-east-1 --name demo2
       - kubectl version
   post_build:
     commands:
